@@ -141,7 +141,7 @@ def change_currency():
                 r1 = result.rate
             if result.currency == cb2.get():
                 r2 = result.rate
-        s = "За " + entry.get() + " " + cb1.get() + " Вы получите " +  str(float(entry.get())/r1*r2) + " " + cb2.get()
+        s = "За " + entry.get() + " " + cb1.get() + " Вы получите " +  str("{:.2f}".format(round(float(entry.get())/r1*r2),2)) + " " + cb2.get()
         label3.config(text=s)
 
 
@@ -161,7 +161,7 @@ if __name__ == "__main__":
         label = tk.Label(window, text="")
         label.pack()
 
-        cb1 = ttk.Combobox(window)
+        cb1 = ttk.Combobox(window, state="readonly")
         cb1['values'] = ('')
         cb1.pack()
 
@@ -176,7 +176,7 @@ if __name__ == "__main__":
         label2 = tk.Label(window, text="Получим")
         label2.pack()
 
-        cb2 = ttk.Combobox(window)
+        cb2 = ttk.Combobox(window, state="readonly")
         cb2['values'] = ('  ')
         cb2.pack()
 
