@@ -1,5 +1,5 @@
 import requests
-from sqlalchemy import create_engine, ForeignKey
+from sqlalchemy import create_engine
 from sqlalchemy import Column, DateTime, Integer, String, Float
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -16,7 +16,7 @@ def check_for_DB(db_path):
         engine.connect()
         return True
 
-    except NoSuchModuleError:
+    except:
         return False
 
 # Creates SQLite DB
@@ -73,7 +73,7 @@ def fill_up_db():
                 session.add(new_data)
                 session.commit()
 
-            results = session.query(CurrencyDB).all()
+            session.query(CurrencyDB).all()
 
             change_curr_date_label(label)
             cb_add_curr(cb1)
